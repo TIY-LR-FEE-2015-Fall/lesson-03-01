@@ -40,6 +40,7 @@ function isValid(ccnum) {
     if (i % 2 === 0) {
       list[i] = list[i] * 2;
 
+      // Turn double digits into a single sum
       list[i] = list[i].toString()
         .split('')
         .reduce(function(carry, item) {
@@ -51,10 +52,11 @@ function isValid(ccnum) {
     sum = sum + list[i];
   }
 
-  console.log(list);
-  console.log(sum);
+  return sum % 10 === 0;
 }
 
 // tests
 console.assert(isValid('4408 0412 3456 7893') == true);
 console.assert(isValid('5000000000000000') === false);
+
+console.log('Everything is passing');
